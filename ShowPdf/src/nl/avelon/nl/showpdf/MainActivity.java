@@ -27,10 +27,25 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-	    Button OpenPDF = (Button) findViewById(R.id.button1);
+		Button OpenPDFCP = (Button) findViewById(R.id.button2);
+	    OpenPDFCP.setOnClickListener(new View.OnClickListener(){
+
+			@Override
+			public void onClick(View vCP) {
+
+				startActivity(new Intent(Intent.ACTION_VIEW, Uri
+						.parse(FileProvider.CONTENT_URI
+								+ "extended notifications.pdf")));
+				finish();			
+				
+			}
+	    	
+	    });
+		
+		Button OpenPDF = (Button) findViewById(R.id.button1);
 	    OpenPDF.setOnClickListener(new View.OnClickListener()
 	    { 
-	        @SuppressWarnings("deprecation")
+	        //@SuppressWarnings("deprecation")
 			public void onClick(View v) 
 	        {
 	        	//Uri uriPdf = Uri.parse("android.resource://nl.avelon.nl.showpdf/pdfFile/extended notifications.pdf");
@@ -104,5 +119,7 @@ public class MainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.activity_main, menu);
 		return true;
 	}
+	
+	
 
 }
